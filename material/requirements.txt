@@ -1,0 +1,7 @@
+google-generativeai
+numpy
+pandas
+tensorflow
+tensorflow_hub
+pytorch
+matplotlib
