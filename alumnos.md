@@ -125,6 +125,8 @@
 29. 55776  Roldán Vicecci, Camila Lucía     | pnn
 30. 57586  Roldán, Julieta del Rocío        | pnn
 31. 59047  Torres, Francisco Gabriel        | pne
+32. 59250  Martinez, Ignacio
+33. 58728  Montivero Lizondo, Martino
 
 ## Comisión 9
  1. 59336  Bulan Georgieff, Alexandre
