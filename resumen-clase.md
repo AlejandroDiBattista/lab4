@@ -27,4 +27,5 @@
     Recorrido por python
     LLegamos a ver numpry y plot 3D
 
-    nueva linea
+    nueva línea agregada
+    
