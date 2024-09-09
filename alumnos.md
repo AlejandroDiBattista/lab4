@@ -92,6 +92,7 @@
 50. 58866  Velázquez, Tobias Alejo
 51. 58899  Villagra, Juan Gabriel
 52. 58874  Rigazio, Malena Soledad
+53. 59909  Wierna, María Belén
 
 ## Comisión 7
  1. 55936  Arcos, Lucas Isaias              | pns
@@ -148,3 +149,4 @@
 17. 59074  Teseyra, Juan Ignacio
 18. 59056  Villafañe, Lucas Gastón
 19. 59314  Yapura, Ramón Alejandro        | pne
+20. 59186  Roldan, Jesús
