@@ -5,7 +5,7 @@
  2. 59277  Aguirre, Emanuel           
  3. 58827  Albornoz Silva, Alejo Miguel         
  4. 58952  Almiron, Maicol Leonel     
- 5. 59731  Alvarez, Nicolás           
+ 5. 58731  Alvarez, Nicolás           
  6. 58828  Alvarez, Nicolás Nahuel    
  7. 59176  Argañaraz, Facundo Nahuel    
  8. 58909  Argañaraz, Leonardo Ramiro    
@@ -16,7 +16,7 @@
 13. 58865  Chávez, Pedro Ismael      
 14. 59234  Chocobar, Matías Sebastián  
 15. 59268  Cordoba, Pedro Josue       
-16. 58784  Coronel, Sergio Antonio     
+16. 58732  Coronel, Sergio Antonio     
 17. 59423  Esper, Rodrigo Fernando  
 18. 55530  Fernández, Agustín Alejo     
 19. 59130  Gatti, Luciano Alberto   
