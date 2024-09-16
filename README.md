@@ -21,11 +21,13 @@ Material de apoyo para el dictado de la material Laboratorio de Programacion IV
 - **10:00 a 12:00** - C7 - Aula 218
 
 #C2
+
 🔴🔴 11. 49185  Bett, Matías Alejandro                             
 🔴🔴 18. 55530  Fernández, Agustín Alejo                           
 🔴🔴 24. 55940  Gramajo, Elba Virginia Maria                       
 
 #C5
+
 🔴🔴 12. 59076  Gómez Martínez, Matías Leonardo                    
 🔴🔴 13. 59135  Gómez, Facundo Matías                              
 🔴🔴 14. 58894  González Nacusse, Flavia                           
@@ -40,12 +42,14 @@ Material de apoyo para el dictado de la material Laboratorio de Programacion IV
 🔴🔴 54. 55600  Cañete Jacobo, Juan Manuel                         
 
 #C7
+
 🔴🔴 20. 59049  Ortiz, Matías Nicolás                              
 🔴🔴 28. 59072  Rodríguez, Ana Paula                               
 🔴🔴 29. 55776  Roldán Vicecci, Camila Lucía                       
 🔴🔴 30. 57586  Roldán, Julieta del Rocío                          
 
 #C9
+
 🔴🔴  1. 59336  Bulan Georgieff, Alexandre                         
 🔴🔴 11. 59933  Saucedo, Lucas Nahuel                              
 🔴🔴 13. 59568  Serrano, Lorenzo                                   
