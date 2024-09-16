@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Graficador de Funciones con React</title>
+  <!-- Incluimos las librerías desde CDNs -->
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjs@11.8.0/lib/browser/math.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Incluimos Babel para soportar JSX en el navegador -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #variables {
+      margin-bottom: 20px;
+    }
+    .variable-input {
+      margin-bottom: 5px;
+    }
+    #graph {
+      width: 100%;
+      height: 600px;
+    }
+    #configuracion {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+    #configuracion label {
+      margin-top: 10px;
+    }
+    #configuracion input, #configuracion select {
+      padding: 5px;
+    }
+    #container {
+      display: flex;
+    }
+    #sidebar {
+      margin-right: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Graficador de Funciones con React</h1>
+  <div id="root"></div>
+
+  <!-- El script principal de la aplicación -->
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    function App() {
+      const [dimension, setDimension] = useState('2D');
+      const [expr, setExpr] = useState('a * x^2 + b * x + c');
+      const [variables, setVariables] = useState([]);
+      const [varValues, setVarValues] = useState({});
+      const [xMin, setXMin] = useState(-10);
+      const [xMax, setXMax] = useState(10);
+      const [yMin, setYMin] = useState(-10);
+      const [yMax, setYMax] = useState(10);
+
+      useEffect(() => {
+        updateVariables();
+      }, [expr, dimension]);
+
+      function extractVariables(expr) {
+        try {
+          const node = math.parse(expr);
+          const filteredVariables = node.filter(function (node) {
+            return node.isSymbolNode && node.name !== 'x' && node.name !== 'y';
+          });
+          const variableNames = filteredVariables.map(function (node) {
+            return node.name;
+          });
+          return Array.from(new Set(variableNames));
+        } catch (err) {
+          alert("Error al analizar la expresión: " + err);
+          return [];
+        }
+      }
+
+      function updateVariables() {
+        const vars = extractVariables(expr);
+        setVariables(vars);
+        const newVarValues = {};
+        vars.forEach((variable) => {
+          newVarValues[variable] = varValues[variable] || 1;
+        });
+        setVarValues(newVarValues);
+      }
+
+      function handleVarChange(variable, value) {
+        setVarValues({
+          ...varValues,
+          [variable]: value,
+        });
+      }
+
+      function graficar() {
+        if (isNaN(xMin) || isNaN(xMax) || xMin >= xMax) {
+          alert("El rango de 'x' es inválido.");
+          return;
+        }
+
+        if (dimension === '3D' && (isNaN(yMin) || isNaN(yMax) || yMin >= yMax)) {
+          alert("El rango de 'y' es inválido.");
+          return;
+        }
+
+        try {
+          const compiledExpr = math.compile(expr);
+
+          if (dimension === '2D') {
+            const xValues = math.range(xMin, xMax, (xMax - xMin) / 500, true).toArray();
+            const yValues = xValues.map(function (x) {
+              return compiledExpr.evaluate({ x: x, ...varValues });
+            });
+
+            const data = [{
+              x: xValues,
+              y: yValues,
+              type: 'scatter',
+              name: expr
+            }];
+
+            const layout = {
+              title: 'Gráfica de la Función',
+              xaxis: { title: 'x' },
+              yaxis: { title: 'f(x)' }
+            };
+
+            Plotly.newPlot('graph', data, layout);
+
+          } else {
+            const xValues = math.range(xMin, xMax, (xMax - xMin) / 50, true).toArray();
+            const yValues = math.range(yMin, yMax, (yMax - yMin) / 50, true).toArray();
+            const zValues = [];
+
+            for (let i = 0; i < xValues.length; i++) {
+              zValues[i] = [];
+              for (let j = 0; j < yValues.length; j++) {
+                const x = xValues[i];
+                const y = yValues[j];
+                const z = compiledExpr.evaluate({ x: x, y: y, ...varValues });
+                zValues[i][j] = z;
+              }
+            }
+
+            const data = [{
+              z: zValues,
+              x: xValues,
+              y: yValues,
+              type: 'surface',
+              name: expr
+            }];
+
+            const layout = {
+              title: 'Gráfica de la Función 3D',
+              scene: {
+                xaxis: { title: 'x' },
+                yaxis: { title: 'y' },
+                zaxis: { title: 'f(x, y)' }
+              }
+            };
+
+            Plotly.newPlot('graph', data, layout);
+          }
+        } catch (err) {
+          alert("Error al evaluar la función: " + err);
+        }
+      }
+
+      return (
+        <div id="container">
+          <div id="sidebar">
+            <div id="configuracion">
+              <label htmlFor="dimension">Dimensión de la gráfica:</label>
+              <select id="dimension" value={dimension} onChange={(e) => setDimension(e.target.value)}>
+                <option value="2D">2D</option>
+                <option value="3D">3D</option>
+              </select>
+
+              <label htmlFor="expr">Expresión:</label>
+              <input
+                type="text"
+                id="expr"
+                value={expr}
+                onChange={(e) => setExpr(e.target.value)}
+                placeholder={dimension === '2D' ? "Ejemplo: a * x^2 + b * x + c" : "Ejemplo: a * x^2 + b * y^2 + c"}
+              />
+
+              <div id="variables">
+                {variables.map((variable) => (
+                  <div className="variable-input" key={variable}>
+                    <label htmlFor={`var_${variable}`}>Valor de '{variable}':</label>
+                    <input
+                      type="number"
+                      id={`var_${variable}`}
+                      value={varValues[variable]}
+                      onChange={(e) => handleVarChange(variable, parseFloat(e.target.value))}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <label htmlFor="x_min">Valor mínimo de 'x':</label>
+              <input
+                type="number"
+                id="x_min"
+                value={xMin}
+                onChange={(e) => setXMin(parseFloat(e.target.value))}
+              />
+
+              <label htmlFor="x_max">Valor máximo de 'x':</label>
+              <input
+                type="number"
+                id="x_max"
+                value={xMax}
+                onChange={(e) => setXMax(parseFloat(e.target.value))}
+              />
+
+              {dimension === '3D' && (
+                <div id="y_range">
+                  <label htmlFor="y_min">Valor mínimo de 'y':</label>
+                  <input
+                    type="number"
+                    id="y_min"
+                    value={yMin}
+                    onChange={(e) => setYMin(parseFloat(e.target.value))}
+                  />
+
+                  <label htmlFor="y_max">Valor máximo de 'y':</label>
+                  <input
+                    type="number"
+                    id="y_max"
+                    value={yMax}
+                    onChange={(e) => setYMax(parseFloat(e.target.value))}
+                  />
+                </div>
+              )}
+
+              <button id="graficar" onClick={graficar}>Graficar</button>
+            </div>
+          </div>
+
+          <div id="graph"></div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Graficador de Funciones</title>
+    <!-- Incluimos las librerías desde CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.8.0/lib/browser/math.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #variables {
+            margin-bottom: 20px;
+        }
+        .variable-input {
+            margin-bottom: 5px;
+        }
+        #graph {
+            width: 100%;
+            height: 600px;
+        }
+        #configuracion {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        #configuracion label {
+            margin-top: 10px;
+        }
+        #configuracion input, #configuracion select {
+            padding: 5px;
+        }
+        #container {
+            display: flex;
+        }
+        #sidebar {
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Graficador de Funciones</h1>
+<div id="container">
+    <div id="sidebar">
+        <div id="configuracion">
+            <label for="dimension">Dimensión de la gráfica:</label>
+            <select id="dimension">
+                <option value="2D">2D</option>
+                <option value="3D">3D</option>
+            </select>
+
+            <label for="expr">Expresión:</label>
+            <input type="text" id="expr" placeholder="Ejemplo: a * x^2 + b * x + c">
+
+            <div id="variables"></div>
+
+            <label for="x_min">Valor mínimo de 'x':</label>
+            <input type="number" id="x_min" value="-10">
+
+            <label for="x_max">Valor máximo de 'x':</label>
+            <input type="number" id="x_max" value="10">
+
+            <div id="y_range" style="display: none;">
+                <label for="y_min">Valor mínimo de 'y':</label>
+                <input type="number" id="y_min" value="-10">
+
+                <label for="y_max">Valor máximo de 'y':</label>
+                <input type="number" id="y_max" value="10">
+            </div>
+
+            <button id="graficar">Graficar</button>
+        </div>
+    </div>
+
+    <div id="graph"></div>
+</div>
+
+<script>
+    const exprInput = document.getElementById('expr');
+    const variablesDiv = document.getElementById('variables');
+    const dimensionSelect = document.getElementById('dimension');
+    const yRangeDiv = document.getElementById('y_range');
+    const graficarBtn = document.getElementById('graficar');
+
+    let variables = [];
+
+    function extractVariables(expr) {
+        // Usamos mathjs para parsear la expresión y extraer las variables
+        try {
+            const node = math.parse(expr);
+            const filteredVariables = node.filter(function (node) {
+                return node.isSymbolNode && node.name !== 'x' && node.name !== 'y';
+            });
+            const variableNames = filteredVariables.map(function (node) {
+                return node.name;
+            });
+            return Array.from(new Set(variableNames));
+        } catch (err) {
+            alert("Error al analizar la expresión: " + err);
+            return [];
+        }
+    }
+
+    function updateVariables() {
+        variablesDiv.innerHTML = '';
+        variables = extractVariables(exprInput.value);
+        variables.forEach(function (variable) {
+            const div = document.createElement('div');
+            div.className = 'variable-input';
+            div.innerHTML = `
+                <label for="var_${variable}">Valor de '${variable}':</label>
+                <input type="number" id="var_${variable}" value="1">
+            `;
+            variablesDiv.appendChild(div);
+        });
+    }
+
+    exprInput.addEventListener('change', updateVariables);
+    dimensionSelect.addEventListener('change', function () {
+        if (dimensionSelect.value === '3D') {
+            yRangeDiv.style.display = 'block';
+        } else {
+            yRangeDiv.style.display = 'none';
+        }
+        updateVariables();
+    });
+
+    graficarBtn.addEventListener('click', function () {
+        const expr = exprInput.value;
+        const dimension = dimensionSelect.value;
+        const xMin = parseFloat(document.getElementById('x_min').value);
+        const xMax = parseFloat(document.getElementById('x_max').value);
+
+        let yMin, yMax;
+        if (dimension === '3D') {
+            yMin = parseFloat(document.getElementById('y_min').value);
+            yMax = parseFloat(document.getElementById('y_max').value);
+        }
+
+        if (isNaN(xMin) || isNaN(xMax) || xMin >= xMax) {
+            alert("El rango de 'x' es inválido.");
+            return;
+        }
+
+        if (dimension === '3D' && (isNaN(yMin) || isNaN(yMax) || yMin >= yMax)) {
+            alert("El rango de 'y' es inválido.");
+            return;
+        }
+
+        const varValues = {};
+        variables.forEach(function (variable) {
+            const value = parseFloat(document.getElementById('var_' + variable).value);
+            if (isNaN(value)) {
+                alert("El valor de la variable '" + variable + "' es inválido.");
+                return;
+            }
+            varValues[variable] = value;
+        });
+
+        try {
+            const compiledExpr = math.compile(expr);
+
+            if (dimension === '2D') {
+                const xValues = math.range(xMin, xMax, (xMax - xMin) / 500, true).toArray();
+                const yValues = xValues.map(function (x) {
+                    return compiledExpr.evaluate(Object.assign({ x: x }, varValues));
+                });
+
+                const data = [{
+                    x: xValues,
+                    y: yValues,
+                    type: 'scatter',
+                    name: expr
+                }];
+
+                const layout = {
+                    title: 'Gráfica de la Función',
+                    xaxis: { title: 'x' },
+                    yaxis: { title: 'f(x)' }
+                };
+
+                Plotly.newPlot('graph', data, layout);
+
+            } else {
+                const xValues = math.range(xMin, xMax, (xMax - xMin) / 50, true).toArray();
+                const yValues = math.range(yMin, yMax, (yMax - yMin) / 50, true).toArray();
+                const zValues = [];
+
+                for (let i = 0; i < xValues.length; i++) {
+                    zValues[i] = [];
+                    for (let j = 0; j < yValues.length; j++) {
+                        const x = xValues[i];
+                        const y = yValues[j];
+                        const z = compiledExpr.evaluate(Object.assign({ x: x, y: y }, varValues));
+                        zValues[i][j] = z;
+                    }
+                }
+
+                const data = [{
+                    z: zValues,
+                    x: xValues,
+                    y: yValues,
+                    type: 'surface',
+                    name: expr
+                }];
+
+                const layout = {
+                    title: 'Gráfica de la Función 3D',
+                    scene: {
+                        xaxis: { title: 'x' },
+                        yaxis: { title: 'y' },
+                        zaxis: { title: 'f(x, y)' }
+                    }
+                };
+
+                Plotly.newPlot('graph', data, layout);
+            }
+        } catch (err) {
+            alert("Error al evaluar la función: " + err);
+        }
+    });
+
+    // Inicializamos las variables al cargar la página
+    updateVariables();
+</script>
+
+</body>
+</html>

@@ -5,3 +5,5 @@ tensorflow
 tensorflow_hub
 pytorch
 matplotlib
+nbconvert 
+nbclient
