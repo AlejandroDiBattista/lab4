@@ -53,8 +53,8 @@
 11. 58740  García, Sergio Martín                              🟢🟢
 12. 59076  Gómez Martínez, Matías Leonardo                    🔴🔴
 13. 59135  Gómez, Facundo Matías                              🔴🔴
-14. 58894  González Nacusse, Flavia                           🔴🔴
-15. 59488  González, Mariano Emanuel                          🔴🔴
+14. 58894  González Nacusse, Flavia                           🔴🟢
+15. 59488  González, Mariano Emanuel                          🟢🔴
 16. 58720  Gonzalez, Martín Natanael                          🟢🟢
 17. 59068  Gonzalez, Silvina Mariela                          🟢🔵
 18. 58687  Jadur, Sofía Nahir                                 🟢🟢
@@ -69,7 +69,7 @@
 27. 59152  Lopez Chipoloni, Agustin                           🟢🟢
 28. 58724  Lopez Garcia, Marcos Julio                         🟢🟢
 29. 59726  Lopez, Fausto Agustin                              🟢🟢
-30. 58729  Lovey, Mathias Exequiel                            🟢🔴
+30. 58729  Lovey, Mathias Exequiel                            🟢🟢
 31. 59184  Lucena, Matías Leandro                             🟢🟢
 32. 59071  Medina, Daiana Micaela                             🟢🟢
 33. 59099  Moyano Berrondo, Tahiel                            🟢🔴
@@ -81,7 +81,7 @@
 39. 58951  Robles, Ezequiel                                   🟢🟢
 40. 58686  Rodriguez, Gustavo                                 🟢🟢
 41. 58806  Rojas, Carlos Augusto                              🟢🟢
-42. 58692  Rosselo Salas, Maia Josefina                       🟢🔴
+42. 58692  Rosselo Salas, Maia Josefina                       🟢🟢
 43. 58873  Salazar, Enzo Gabriel                              🟢🟢
 44. 55870  Stemberger, Emiliano                               🔴🔴
 45. 58845  Terrera, Augusto Dante                             🟢🟢
@@ -93,7 +93,7 @@
 51. 58899  Villagra, Juan Gabriel                             🟢🔵
 52. 58874  Rigazio, Malena Soledad                            🔴🔴
 53. 59909  Wierna, María Belén                                🔴🔴
-54. 55600  Cañete Jacobo, Juan Manuel                         🔴🔴
+54. 55600  Cañete Jacobo, Juan Manuel                         🟢🟢
 
 ## Comisión 7
  1. 55936  Arcos, Lucas Isaias                                🟢🟢
@@ -147,7 +147,7 @@
 14. 59059  Soraire, Elías Nicolás                             🟢🔴
 15. 59110  Soria, Joaquín                                     🟢🟢
 16. 58846  Sosa, Franco Maximiliano                           🟢🟢
-17. 59074  Teseyra, Juan Ignacio                              🟢🔴
+17. 59074  Teseyra, Juan Ignacio                              🟢🟢
 18. 59056  Villafañe, Lucas Gastón                            🟢🟢
 19. 59314  Yapura, Ramón Alejandro                            🟢🟢
 20. 59186  Roldan, Jesús                                      🔴🔴
