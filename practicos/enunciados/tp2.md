@@ -20,8 +20,8 @@ Estos parciales son los que se conseraran (junto con la asistencia) para la prom
 > 
 > 1. Cambiar a la rama principal (main).
 > 2. Descargar la última versión del repositorio del curso (fetch).
-> 3. Crear una nueva rama para tus cambios (new branch) (tp1-{alumno}).
-> 4. Abrir la carpeta correspondiente a tu nombre de usuario (practicos/{alumno}/tp1).
+> 3. Crear una nueva rama para tus cambios (new branch) (tp3-{alumno}).
+> 4. Abrir la carpeta correspondiente a tu nombre de usuario (practicos/{alumno}/tp3).
 > 5. Resolver el ejercicio que se planta
 > 6. Confirmar los cambios (commit).
 > 7. Publicar los cambios (pull)
@@ -32,4 +32,4 @@ Estos parciales son los que se conseraran (junto con la asistencia) para la prom
 
 > [!NOTE]
 > Fecha de entrega: 
-> - *Sabado 14 de SEPTIEMBRE hasta las 23:59hs*
+> - *Sabado 21 de SEPTIEMBRE hasta las 23:59hs*
