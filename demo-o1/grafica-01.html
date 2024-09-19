@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicación de Gráficas Matemáticas</title>
+    <!-- Importar Material UI CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Importar los iconos de Material UI -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <!-- Importar Plotly.js para gráficas -->
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js/dist/plotly.min.js"></script>
+    <!-- Importar Babel para transpilar JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Importar React y ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Importar Material UI -->
+    <script crossorigin src="https://unpkg.com/@material-ui/core@4.12.3/umd/material-ui.development.js"></script>
+    <!-- Importar math.js para evaluar expresiones matemáticas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const {
+            Button,
+            TextField,
+            Slider,
+            Typography,
+            AppBar,
+            Toolbar,
+            Container,
+            Grid,
+            Paper,
+            FormControl,
+            Select,
+            InputLabel,
+            MenuItem
+        } = MaterialUI;
+
+        function App() {
+            const [expr, setExpr] = React.useState('a*x^2 + b*x + c');
+            const [constants, setConstants] = React.useState({});
+            const [variables, setVariables] = React.useState(['x']);
+            const [ranges, setRanges] = React.useState({
+                x: { min: -10, max: 10 },
+                y: { min: -10, max: 10 }
+            });
+            const [graphType, setGraphType] = React.useState('2D');
+
+            // Extraer constantes de la expresión
+            React.useEffect(() => {
+                const varPattern = /[a-zA-Z]+/g;
+                const varsInExpr = [...new Set(expr.match(varPattern))].map(v => v.toLowerCase());
+                const newConstants = {};
+                varsInExpr.forEach(v => {
+                    if (!variables.includes(v)) {
+                        newConstants[v] = constants[v] || 1;
+                    }
+                });
+                setConstants(newConstants);
+            }, [expr]);
+
+            const handleExprChange = (event) => {
+                setExpr(event.target.value.toLowerCase());
+            };
+
+            const handleConstantChange = (name) => (event, newValue) => {
+                setConstants({
+                    ...constants,
+                    [name]: newValue
+                });
+            };
+
+            const handleRangeChange = (varName, bound) => (event) => {
+                setRanges({
+                    ...ranges,
+                    [varName]: {
+                        ...ranges[varName],
+                        [bound]: parseFloat(event.target.value)
+                    }
+                });
+            };
+
+            const handleGraphTypeChange = (event) => {
+                const type = event.target.value;
+                setGraphType(type);
+                if (type === '2D') {
+                    setVariables(['x']);
+                } else {
+                    setVariables(['x', 'y']);
+                }
+            };
+
+            const evaluateExpression = (expr, scope) => {
+                try {
+                    const node = math.parse(expr);
+                    const code = node.compile();
+                    return code.evaluate(scope);
+                } catch (error) {
+                    console.error('Error al evaluar la expresión:', error);
+                    return NaN;
+                }
+            };
+
+            const plotGraph = () => {
+                const data = [];
+                if (graphType === '2D') {
+                    const xVals = math.range(ranges.x.min, ranges.x.max, (ranges.x.max - ranges.x.min)/100, true).toArray();
+                    const yVals = xVals.map(x => {
+                        const scope = { x, ...constants };
+                        return evaluateExpression(expr, scope);
+                    });
+                    data.push({
+                        x: xVals,
+                        y: yVals,
+                        type: 'scatter'
+                    });
+                } else {
+                    const xVals = math.range(ranges.x.min, ranges.x.max, (ranges.x.max - ranges.x.min)/50, true).toArray();
+                    const yVals = math.range(ranges.y.min, ranges.y.max, (ranges.y.max - ranges.y.min)/50, true).toArray();
+                    const zVals = [];
+                    for (let i = 0; i < xVals.length; i++) {
+                        zVals[i] = [];
+                        for (let j = 0; j < yVals.length; j++) {
+                            const x = xVals[i];
+                            const y = yVals[j];
+                            const scope = { x, y, ...constants };
+                            zVals[i][j] = evaluateExpression(expr, scope);
+                        }
+                    }
+                    data.push({
+                        x: xVals,
+                        y: yVals,
+                        z: zVals,
+                        type: 'surface'
+                    });
+                }
+                const layout = {
+                    title: 'Gráfico de la función',
+                    autosize: true
+                };
+                Plotly.newPlot('plot', data, layout);
+            };
+
+            React.useEffect(() => {
+                plotGraph();
+            }, [expr, constants, ranges, graphType]);
+
+            return (
+                <Container>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography variant="h6">Aplicación de Gráficas Matemáticas</Typography>
+                        </Toolbar>
+                    </AppBar>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} md={4}>
+                            <Paper style={{ padding: 16 }}>
+                                <Typography variant="h6">Parámetros</Typography>
+                                <FormControl fullWidth style={{ marginTop: 16 }}>
+                                    <InputLabel>Tipo de Gráfico</InputLabel>
+                                    <Select value={graphType} onChange={handleGraphTypeChange}>
+                                        <MenuItem value="2D">2D</MenuItem>
+                                        <MenuItem value="3D">3D</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <TextField
+                                    label="Ingresa la función"
+                                    value={expr}
+                                    onChange={handleExprChange}
+                                    fullWidth
+                                    style={{ marginTop: 16 }}
+                                />
+                                <Typography variant="subtitle1" style={{ marginTop: 16 }}>Constantes</Typography>
+                                {Object.keys(constants).sort().map(name => (
+                                    <div key={name} style={{ marginTop: 8 }}>
+                                        <Typography gutterBottom>{`Constante ${name.toUpperCase()}: ${constants[name]}`}</Typography>
+                                        <Slider
+                                            value={constants[name]}
+                                            min={-10}
+                                            max={10}
+                                            step={0.1}
+                                            onChange={handleConstantChange(name)}
+                                            valueLabelDisplay="auto"
+                                        />
+                                    </div>
+                                ))}
+                                <Typography variant="h6" style={{ marginTop: 16 }}>Rango de los Ejes</Typography>
+                                {variables.map(varName => (
+                                    <div key={varName} style={{ marginTop: 16 }}>
+                                        <Typography variant="subtitle1">{`Rango de ${varName.toUpperCase()}`}</Typography>
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={6}>
+                                                <TextField
+                                                    label={`Mín ${varName.toUpperCase()}`}
+                                                    type="number"
+                                                    value={ranges[varName].min}
+                                                    onChange={handleRangeChange(varName, 'min')}
+                                                    inputProps={{ min: -20, max: 20 }}
+                                                    fullWidth
+                                                />
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <TextField
+                                                    label={`Máx ${varName.toUpperCase()}`}
+                                                    type="number"
+                                                    value={ranges[varName].max}
+                                                    onChange={handleRangeChange(varName, 'max')}
+                                                    inputProps={{ min: -20, max: 20 }}
+                                                    fullWidth
+                                                />
+                                            </Grid>
+                                        </Grid>
+                                    </div>
+                                ))}
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={8}>
+                            <div id="plot" style={{ width: '100%', height: '600px' }}></div>
+                        </Grid>
+                    </Grid>
+                </Container>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
