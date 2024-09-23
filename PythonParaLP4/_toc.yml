@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: 00-intro
+chapters:
+- file: 01-python
+- file: 02-variables
+- file: 03-colecciones
+- file: 04-flujo
+- file: 05-funciones
+- file: 06-genesis
+- file: 07-clases
+- file: 08-integrar
+- file: 09-iteradores
+- file: 10-errores
+- file: 11-modulos
