@@ -1,6 +1,6 @@
 # Lab4 | Laboratorio de Programación 4
 
-Material de apoyo para el dictado de la material Laboratorio de Programacion IV 
+Material de apoyo para el dictado de la material Laboratorio de Programación IV 
 
 ## Horarios
 
@@ -21,8 +21,8 @@ Material de apoyo para el dictado de la material Laboratorio de Programacion IV
 - **10:00 a 12:00** - C7 - Aula 218
 
 
-
 ## Presentación de TP por Comisión
+
 ### C2
 🔴🔴🔴 11. 49185  Bett, Matías Alejandro                             
 🔴🔴🔴 24. 55940  Gramajo, Elba Virginia Maria                       

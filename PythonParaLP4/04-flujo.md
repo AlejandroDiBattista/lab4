@@ -177,9 +177,11 @@ else:
 #> Bucle completado sin interrupciones.
 ```
 
-## Repetición
+**Nota:** En el ejemplo del uso de `continue`, el número `2` se omite en la salida porque la sentencia `continue` hace que el bucle pase a la siguiente iteración cuando `numero == 2`.
 
-La **repetición** en Python se logra principalmente mediante los bucles `for` y `while`, como se describió anteriormente. Además, Python ofrece herramientas adicionales para manejar iteraciones de manera eficiente.
+## Iteración
+
+La **iteración** en Python se logra principalmente mediante los bucles `for` y `while`, como se describió anteriormente. Además, Python ofrece herramientas adicionales para manejar iteraciones de manera eficiente.
 
 ### Función `range()`
 
@@ -232,7 +234,7 @@ Las **comprensiones de listas** proporcionan una forma concisa de crear listas b
 #### Sintaxis básica
 
 ```python
-[nueva_expresion for elemento in secuencia if condición]
+[nueva_expresión for elemento in secuencia if condición]
 ```
 
 #### Ejemplos
@@ -317,7 +319,7 @@ Las funciones pueden tener **parámetros** (variables en la definición) y recib
 - **Posicionales**: Se asignan según el orden.
 - **Por palabra clave**: Se asignan mediante el nombre del parámetro.
 - **Predeterminados**: Tienen un valor por defecto si no se proporciona uno.
-- **Variable**: Permiten pasar un número variable de argumentos (`*args` y `**kwargs`).
+- **Variables**: Permiten pasar un número variable de argumentos (`*args` y `**kwargs`).
 
 #### Ejemplos
 
@@ -425,7 +427,7 @@ print(factorial(5))
 
 - **Caso base**: Es esencial definir un caso base para evitar llamadas infinitas.
 - **Eficiencia**: Las soluciones recursivas pueden ser menos eficientes en términos de memoria y tiempo comparadas con las iterativas.
-- **Límites de recursión**: Python tiene un límite en la profundidad de recursión (por defecto, 1000 llamadas).
+- **Límites de recursión**: Python tiene un límite en la profundidad de recursión (por defecto, alrededor de 1000 llamadas).
 
 #### Ejemplo de límite de recursión
 
@@ -435,25 +437,6 @@ def contar_recursivo(n):
     return contar_recursivo(n + 1)
 
 # contar_recursivo(1)  # Esto generará un error: RecursionError: maximum recursion depth exceeded
-```
-
-### Optimización con memoización
-
-La **memoización** es una técnica para almacenar los resultados de las llamadas a funciones, evitando cálculos redundantes.
-
-#### Ejemplo con memoización
-
-```python
-def fibonacci(n, memo={}):
-    if n in memo:
-        return memo[n]
-    if n <= 1:
-        return n
-    memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo)
-    return memo[n]
-
-print(fibonacci(10))
-#> 55
 ```
 
 ## Excepciones
@@ -490,7 +473,9 @@ try:
 except ZeroDivisionError as e:
     print("Error: No se puede dividir por cero.")
 #> Error: No se puede dividir por cero.
+```
 
+```python
 # Uso de else
 try:
     numero = int(input("Ingresa un número: "))

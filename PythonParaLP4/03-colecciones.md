@@ -32,8 +32,8 @@ nombres.append("María")
 #> ['Juan', 'María']
 
 # Otras formas de crear una lista vacía
-vacia = []                  # Lista vacía
-vacia = list()              # Lista vacía usando la función `list()`
+vacia = []       # Lista vacía
+vacia = list()   # Lista vacía usando la función `list()`
 
 # Copiar una lista
 nueva = list(nombres)
@@ -56,15 +56,15 @@ vocales = list("aeiou")     # Lista con las vocales
 
 ### Acceso a los elementos de una lista
 
-Los elementos de una lista se acceden mediante un **índice**. El índice comienza en 0. Si el índice es negativo, se cuenta desde el final de la lista.
+Los elementos de una lista se acceden mediante un **índice**. El índice comienza en `0`. Si el índice es negativo, se cuenta desde el final de la lista.
 
 ```python
 nombres = ["Juan", "María", "Carlos"]
 
-print(nombres[0])  # Acceder al primer elemento
+print(nombres[0])    # Acceder al primer elemento
 #> Juan
 
-print(nombres[-1])  # Acceder al último elemento
+print(nombres[-1])   # Acceder al último elemento
 #> Carlos
 
 # Modificar un elemento de la lista
@@ -110,16 +110,14 @@ print(a, b)  # `a` no se modifica
 
 # Otras formas de copiar una lista
 b = list(a)          # Usando el constructor `list()`
-b = a[:]             # Usando el operador slice `[:]`
+b = a[:]             # Usando el operador slicing `[:]`
 b = [*a]             # Usando el operador `*` para desempaquetar la lista
 b = [x for x in a]   # Usando una comprensión de listas
 ```
 
 ### Slicing de listas
 
-Existe una función en Python llamada **slicing** que permite obtener una sublista de una lista.  
-Esta función se puede usar tanto para extraer una sublista como para modificarla.  
-Se puede llamar explícitamente a la función `slice()` o se puede usar la notación `:`, esta última es la más común y más fácil de usar.
+El **slicing** es una técnica en Python que permite obtener una sublista de una lista. Esta funcionalidad se puede usar tanto para extraer una sublista como para modificarla. Se puede llamar explícitamente a la función `slice()` o se puede usar la notación `[:]`, siendo esta última la más común y fácil de usar.
 
 ```python
 lista = [10, 20, 30, 40, 50, 60, 70, 80, 90]
@@ -128,19 +126,19 @@ print(lista[slice(2, 7, 2)])  # Tomar del índice 2 al 7 (sin incluir) con salto
 # slice(inicio, fin, salto) === lista[inicio:fin:salto]
 
 # Si no se especifica el inicio, se toma desde el principio
-print(lista[:7])  # Tomar del principio al 7 (sin incluir)
+print(lista[:7])  # Tomar desde el inicio hasta el índice 7 (sin incluir)
 #> [10, 20, 30, 40, 50, 60, 70]
 
 # Si no se especifica el fin, se toma hasta el final
-print(lista[2:])  # Tomar del índice 2 al final
+print(lista[2:])  # Tomar desde el índice 2 hasta el final
 #> [30, 40, 50, 60, 70, 80, 90]
 
-# Si no se especifica el salto, se toma de a 1
-print(lista[2:7])  # Tomar del índice 2 al 7 (sin incluir) de a 1
+# Si no se especifica el salto, se toma de uno en uno
+print(lista[2:7])  # Tomar del índice 2 al 7 (sin incluir) de uno en uno
 #> [30, 40, 50, 60, 70]
 
 # Se pueden combinar todas las opciones
-print(lista[2:7:2])  # Tomar del índice 2 al 7 (sin incluir) de a 2
+print(lista[2:7:2])  # Tomar del índice 2 al 7 (sin incluir) de dos en dos
 #> [30, 50, 70]
 
 # Si no se especifica el inicio, el fin y el salto, se toma toda la lista
@@ -158,7 +156,7 @@ copia = lista[:]
 invertida = lista[::-1]
 ```
 
-En todos estos casos, se usa para extraer un valor cuando se utiliza el slicing en el lado derecho de una asignación. Pero también se puede usar para modificar una lista, es decir, cuando se usa el slicing en el lado izquierdo de una asignación.
+En todos estos casos, el slicing se usa para extraer valores cuando se utiliza en el lado derecho de una asignación. Pero también se puede usar para modificar una lista cuando se utiliza en el lado izquierdo de una asignación.
 
 ```python
 lista = [10, 20, 30, 40, 50, 60, 70, 80, 90]
@@ -169,7 +167,7 @@ lista[2:7] = [31, 41, 51, 61, 71]  # Modificar del índice 2 al 7 (sin incluir)
 print(lista)
 #> [10, 20, 31, 41, 51, 61, 71, 80, 90]
 
-lista[2:7:2] = [32, 52, 72]  # Modificar del índice 2 al 7 (sin incluir) de a 2
+lista[2:7:2] = [32, 52, 72]  # Modificar del índice 2 al 7 (sin incluir) de dos en dos
 print(lista)
 #> [10, 20, 32, 41, 52, 61, 72, 80, 90]
 
@@ -184,8 +182,7 @@ print(lista)
 #> [10, 20, 30, 40, 80, 90]
 ```
 
-El **slicing** es una función muy poderosa y versátil, y es muy común en Python, por lo que es importante conocerla y saber usarla.  
-El operador `:` es la forma más común de usarlo, pero también se puede usar la función `slice()` explícitamente.
+El **slicing** es una herramienta muy poderosa y versátil, y es muy común en Python, por lo que es importante conocerla y saber usarla. El operador `:` es la forma más común de utilizarlo, pero también se puede usar la función `slice()` explícitamente.
 
 ### Recorrer una lista
 
@@ -195,7 +192,7 @@ Para recorrer una lista, podemos usar un bucle `for` o un bucle `while`, utiliza
 nombres = ['Juan', 'María', 'Carlos']
 
 # Con un bucle `while`
-i = 0 
+i = 0
 while i < len(nombres):
     nombre = nombres[i]
     print(nombre, end=' ')
@@ -296,7 +293,7 @@ print(nombres_copia)
 
 Los **diccionarios** permiten mantener una colección **desordenada** de valores heterogéneos que se pueden acceder mediante una **clave**. En Python, un diccionario se define utilizando llaves `{}` y los pares clave-valor se separan por comas `,`.
 
-Las claves pueden ser cualquier valor inmutable, como una cadena, un número o una tupla. Los valores pueden ser de cualquier tipo de dato.
+Las claves pueden ser cualquier valor inmutable y hashable, como una cadena, un número o una tupla cuyos elementos también sean inmutables. Los valores pueden ser de cualquier tipo de dato.
 
 ### Creación de un diccionario
 
@@ -318,7 +315,7 @@ persona["edad"] = 30
 
 ### Acceso a los elementos de un diccionario
 
-Para acceder a un diccionario usamos la **clave** entre corchetes `[]`. Si accedemos a una clave inexistente, se generará un error. Para evitar este error, podemos usar el método `get()` o el operador `in`.
+Para acceder a un elemento de un diccionario usamos la **clave** entre corchetes `[]`. Si accedemos a una clave inexistente, se generará un error `KeyError`. Para evitar este error, podemos usar el método `get()` o verificar la existencia de la clave con el operador `in`.
 
 ```python
 persona = {'nombre': 'Juan', 'edad': 30}
@@ -335,7 +332,7 @@ print(persona.get('nombre'))
 print(persona.get('apellido'))
 #> None
 
-# Intentar acceder a una clave inexistente con `get()`, retorna un valor por defecto
+# Intentar acceder a una clave inexistente con `get()`, retornando un valor por defecto
 print(persona.get('apellido', '(anónimo)'))
 #> (anónimo)
 
@@ -398,20 +395,22 @@ print(persona)
 
 Los **conjuntos** son colecciones desordenadas de elementos únicos. Se utilizan para almacenar elementos sin duplicados y para realizar operaciones matemáticas como la unión, intersección y diferencia.
 
-En Python, un conjunto se define utilizando llaves `{}` o la función `set()`.
+En Python, un conjunto se define utilizando llaves `{}` para conjuntos con elementos o la función `set()`.
 
 ### Creación de un conjunto
 
 ```python
-# Usando llaves
+# Usando llaves con elementos
 frutas = {"manzana", "banana", "cereza"}
 
 # Usando la función `set()`
 numeros = set([1, 2, 3, 4, 5])
 
 # Crear un conjunto vacío
-vacio = set()
+vacio = set()  # No se puede usar {} porque crea un diccionario vacío
 ```
+
+**Nota:** Para crear un conjunto vacío se debe usar `set()`. Usar `{}` creará un diccionario vacío.
 
 ### Operaciones con conjuntos
 
@@ -426,12 +425,12 @@ vacio = set()
 # Agregar un elemento
 frutas.add("naranja")
 print(frutas)
-#> {'cereza', 'banana', 'naranja', 'manzana'}
+#> {'banana', 'manzana', 'naranja', 'cereza'}
 
 # Eliminar un elemento
 frutas.remove("banana")
 print(frutas)
-#> {'cereza', 'naranja', 'manzana'}
+#> {'manzana', 'naranja', 'cereza'}
 
 # Unión de conjuntos
 set1 = {1, 2, 3}
@@ -558,7 +557,7 @@ print(tupla1.count(2))
 
 ### Métodos adicionales de tuplas
 
-Las tuplas también ofrecen métodos adicionales que facilitan su manipulación:
+Las tuplas ofrecen métodos que facilitan su manipulación:
 
 - **`count()`**: Cuenta cuántas veces aparece un elemento.
 - **`index()`**: Retorna el índice de la primera aparición de un elemento.
