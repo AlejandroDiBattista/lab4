@@ -48,7 +48,7 @@ Al seguir estas reglas, se facilita la lectura y comprensión del código, lo qu
 
 ## Tipos básicos: `int`
 
-Los enteros (`int`) son un tipo de dato básico en Python que se utiliza para representar números enteros. Se los puede utilizar para realizar operaciones matemáticas simples, como sumas, restas, multiplicaciones y divisiones. Tienen la particularidad que no tiene limite en su tamaño (bueno, siempre hay limites pero es muy grande).
+Los enteros (`int`) son un tipo de dato básico en Python que se utiliza para representar números enteros. Se pueden utilizar para realizar operaciones matemáticas simples, como sumas, restas, multiplicaciones y divisiones. Tienen la particularidad de que no tienen límite en su tamaño (bueno, siempre hay límites pero son muy grandes).
 
 Se identifican porque comienzan con un dígito y no tienen punto decimal. Existen múltiples formas de describir un entero, pero más allá de la forma de ingresarlo, siempre se almacena como un número entero.
 
