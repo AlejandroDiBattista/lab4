@@ -1,4 +1,4 @@
-## ¿Qué es Python?
+# ¿Qué es Python?
 
 Python es un lenguaje de propósito general que fue creado por Guido van Rossum en 1991. Es un lenguaje de programación interpretado, interactivo y orientado a objetos. Python es un lenguaje de alto nivel, lo que significa que es fácil de leer y escribir.
 
