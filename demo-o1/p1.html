@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Graficador Interactivo de Ecuaciones</title>
+  <!-- Material UI -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Math.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"></script>
+  <!-- React and ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Material UI Core -->
+  <script src="https://unpkg.com/@mui/material@5.0.0-beta.5/umd/material-ui.development.js" crossorigin></script>
+  <!-- Material UI Icons -->
+  <script src="https://unpkg.com/@mui/icons-material@5.0.0-beta.5/umd/material-ui-icons.development.js" crossorigin></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    #root {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 300px;
+      padding: 16px;
+      box-sizing: border-box;
+      border-right: 1px solid #ddd;
+      overflow-y: auto;
+    }
+    .content {
+      flex-grow: 1;
+      padding: 16px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const {
+      AppBar,
+      Toolbar,
+      Typography,
+      TextField,
+      Select,
+      MenuItem,
+      FormControl,
+      InputLabel,
+      Slider,
+      Box,
+      Button,
+      CssBaseline,
+    } = MaterialUI;
+
+    function App() {
+      const [tipoGrafica, setTipoGrafica] = React.useState('2D');
+      const [ecuacion, setEcuacion] = React.useState('a * sin(b * x) + c');
+      const [constantes, setConstantes] = React.useState([]);
+      const [valoresConstantes, setValoresConstantes] = React.useState({});
+      const [error, setError] = React.useState(null);
+      const [graficoData, setGraficoData] = React.useState(null);
+
+      // Funciones matemáticas permitidas
+      const funcionesPermitidas = ['sin', 'cos', 'tan', 'exp', 'log', 'sqrt'];
+
+      // Extraer constantes de la ecuación
+      React.useEffect(() => {
+        try {
+          const node = math.parse(ecuacion);
+          const variables = node.filter((node) => node.isSymbolNode).map((node) => node.name);
+          const uniqueVariables = [...new Set(variables)];
+          const nuevasConstantes = uniqueVariables.filter(
+            (v) => v !== 'x' && v !== 'y' && !funcionesPermitidas.includes(v)
+          );
+          const nuevasValoresConstantes = {};
+          nuevasConstantes.forEach((constante) => {
+            nuevasValoresConstantes[constante] = valoresConstantes[constante] || 1;
+          });
+          setConstantes(nuevasConstantes);
+          setValoresConstantes(nuevasValoresConstantes);
+          setError(null);
+        } catch (err) {
+          setError('Error al analizar la ecuación. Por favor, verifica la sintaxis.');
+        }
+      }, [ecuacion]);
+
+      // Actualizar el gráfico cuando cambian los valores
+      React.useEffect(() => {
+        generarGrafico();
+      }, [valoresConstantes, tipoGrafica, ecuacion]);
+
+      const generarGrafico = () => {
+        try {
+          const scope = { ...valoresConstantes, x: null, y: null };
+          const expr = math.compile(ecuacion);
+          if (tipoGrafica === '2D') {
+            const xValues = math.range(-10, 10, 0.1).toArray();
+            const yValues = xValues.map((x) => {
+              scope.x = x;
+              return expr.evaluate(scope);
+            });
+            setGraficoData({
+              data: [
+                {
+                  x: xValues,
+                  y: yValues,
+                  type: 'scatter',
+                  mode: 'lines',
+                },
+              ],
+              layout: {
+                title: 'Gráfica 2D',
+                xaxis: { title: 'x' },
+                yaxis: { title: 'y' },
+              },
+            });
+          } else {
+            const xValues = math.range(-10, 10, 0.5).toArray();
+            const yValues = math.range(-10, 10, 0.5).toArray();
+            const zValues = [];
+            for (let i = 0; i < xValues.length; i++) {
+              zValues[i] = [];
+              for (let j = 0; j < yValues.length; j++) {
+                scope.x = xValues[i];
+                scope.y = yValues[j];
+                zValues[i][j] = expr.evaluate(scope);
+              }
+            }
+            setGraficoData({
+              data: [
+                {
+                  z: zValues,
+                  x: xValues,
+                  y: yValues,
+                  type: 'surface',
+                },
+              ],
+              layout: {
+                title: 'Gráfica 3D',
+                scene: {
+                  xaxis: { title: 'x' },
+                  yaxis: { title: 'y' },
+                  zaxis: { title: 'z' },
+                },
+              },
+            });
+          }
+          setError(null);
+        } catch (err) {
+          setError('Error al evaluar la ecuación. Por favor, verifica la sintaxis y los valores.');
+        }
+      };
+
+      const handleSliderChange = (constante) => (event, newValue) => {
+        setValoresConstantes({ ...valoresConstantes, [constante]: newValue });
+      };
+
+      return (
+        <React.Fragment>
+          <CssBaseline />
+          <AppBar position="static">
+            <Toolbar>
+              <Typography variant="h6">Graficador Interactivo de Ecuaciones</Typography>
+            </Toolbar>
+          </AppBar>
+          <div id="root-content" style={{ display: 'flex', height: 'calc(100vh - 64px)' }}>
+            <div className="sidebar">
+              <FormControl fullWidth margin="normal">
+                <InputLabel id="tipo-grafica-label">Tipo de Gráfica</InputLabel>
+                <Select
+                  labelId="tipo-grafica-label"
+                  value={tipoGrafica}
+                  onChange={(e) => setTipoGrafica(e.target.value)}
+                >
+                  <MenuItem value="2D">2D</MenuItem>
+                  <MenuItem value="3D">3D</MenuItem>
+                </Select>
+              </FormControl>
+              <TextField
+                label={
+                  tipoGrafica === '2D'
+                    ? 'Ecuación en función de x'
+                    : 'Ecuación en función de x e y'
+                }
+                value={ecuacion}
+                onChange={(e) => setEcuacion(e.target.value)}
+                fullWidth
+                margin="normal"
+              />
+              {constantes.length > 0 && (
+                <Box mt={2}>
+                  <Typography variant="h6">Ajustar Constantes</Typography>
+                  {constantes.map((constante) => (
+                    <Box key={constante} mt={2}>
+                      <Typography gutterBottom>{`Valor de ${constante}: ${valoresConstantes[constante]}`}</Typography>
+                      <Slider
+                        value={valoresConstantes[constante]}
+                        onChange={handleSliderChange(constante)}
+                        aria-labelledby="continuous-slider"
+                        valueLabelDisplay="auto"
+                        step={0.1}
+                        min={-10}
+                        max={10}
+                      />
+                    </Box>
+                  ))}
+                </Box>
+              )}
+            </div>
+            <div className="content">
+              {error && (
+                <Typography color="error" variant="h6">
+                  {error}
+                </Typography>
+              )}
+              {graficoData && (
+                <div id="grafico">
+                  <Plot
+                    data={graficoData.data}
+                    layout={graficoData.layout}
+                    style={{ width: '100%', height: '100%' }}
+                    config={{ responsive: true }}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
