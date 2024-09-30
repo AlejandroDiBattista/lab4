@@ -1,6 +1,7 @@
 # Alumnos Lab4.2024
 
 ## Comisión 2
+```
  1. 58764  Acuña, Ana Sofía                         🟢🟢🔵🟢
  2. 59277  Aguirre, Emanuel                         🟢🟢🟢🔵
  3. 58827  Albornoz Silva, Alejo Miguel             🟢🟢🟢🟢
@@ -38,9 +39,10 @@
 35. 59450  Skibski, Ignacio                         🟢🟢🔵🔵
 36. 59451  Urueña, Karen Florencia                  🟢🔵🟢🔵
 37. 59160  Veneziano, Juan Ignacio                  🟢🟢🟢🔵
+```
 
 ## Comisión 5
- 1. 58690  Díaz, Facundo Gabriel                    🟢🟢🔴🔴
+```
  2. 58876  Díaz, Manuel Lautaro                     🟢🟢🟢🟢
  3. 58773  Ellí Salazar, Gerónimo                   🟢🟢🟢🟢
  4. 55578  Fernández Dumit, Patricio                🟢🟢🔵🔵
@@ -94,9 +96,10 @@
 52. 58874  Rigazio, Malena Soledad                  🟢🔴🔴🔴
 53. 59909  Wierna, María Belén                      🔴🔴🔴🔴
 54. 55600  Cañete Jacobo, Juan Manuel               🟢🟢🟢🔴
+```
 
 ## Comisión 7
- 1. 55936  Arcos, Lucas Isaias                      🟢🟢🟢🟢
+```
  2. 55547  Cabrera, Pablo Daniel                    🟢🔵🔵🟢
  3. 58769  Callejas, Máximo Facundo                 🟢🟢🟢🔵
  4. 59312  Cancino, Ignacio Matías                  🔴🟢🟢🟢
@@ -129,9 +132,10 @@
 31. 59047  Torres, Francisco Gabriel                🟢🟢🟢🟢
 32. 59250  Martinez, Ignacio                        🔴🟢🔵🟢
 33. 58728  Montivero Lizondo, Martino               🟢🟢🟢🟢
+```
 
 ## Comisión 9
- 1. 59336  Bulan Georgieff, Alexandre               🔴🔴🔴🔴
+```
  2. 58842  Fernández Licciardi, Mauricio            🟢🟢🟢🟢
  3. 59310  Paz Berrondo, Nahuel Agustín             🟢🟢🟢🟢
  4. 58679  Pereyra, Franco Sebastián                🟢🟢🟢🔵
@@ -152,3 +156,4 @@
 19. 59314  Yapura, Ramón Alejandro                  🟢🟢🟢🟢
 20. 59186  Roldan, Jesús                            🔴🔴🔴🔴
 21. 59055  Saravia, Franco Nicolas                  🔴🔴🔴🔴
+```
