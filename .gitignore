@@ -164,3 +164,4 @@ cython_debug/
 /mynewbook/_build
 /mynewbook
 /PythonParaLP4/_build
+config.env

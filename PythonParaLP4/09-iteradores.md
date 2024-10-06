@@ -63,17 +63,16 @@ for i in range(5):
     print(i)
 ```
 
-La sentencia `for` busca si el objeto pasado tiene el método `__iter__`. Si no lo tiene, intenta acceder a los elementos mediante el método `__getitem__` empezando por el índice `0` hasta que se produzca una excepción `IndexError`. No utiliza `__len__`.
+La sentencia `for` busca si el objeto pasado tiene el método `__iter__`. Si no lo tiene, intenta acceder a los elementos mediante el método `__getitem__`, comenzando por el índice `0` hasta que se produzca una excepción `IndexError`. No utiliza el método `__len__`.
 
 La ventaja de los iteradores es que permiten recorrer colecciones de elementos de manera eficiente, sin tener que cargar todos los elementos en memoria al mismo tiempo. Esto es especialmente útil cuando se trabaja con colecciones grandes o infinitas.
 
-Python utiliza intensamente los iteradores, por ejemplo:
+Python utiliza intensamente los iteradores. Por ejemplo:
 
 ```python 
 l = list("abracadabra")
 print(l)
 # Output: ['a', 'b', 'r', 'a', 'c', 'a', 'd', 'a', 'b', 'r', 'a']
-
 # list usa un iterador para recorrer la cadena
 
 s = set("abracadabra")
@@ -108,9 +107,9 @@ print(c)
 # Output: 3
 # sum usa un iterador para recorrer los elementos de la tupla (1, 2)
 
-c = sum([1, 2])
+c = sum([1, 2, 4, 7])
 print(c)
-# Output: 3
+# Output: 14
 
 # sum usa un iterador para recorrer los elementos de la lista [1, 2]
 

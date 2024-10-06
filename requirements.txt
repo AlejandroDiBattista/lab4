@@ -7,3 +7,4 @@ pytorch
 matplotlib
 nbconvert 
 nbclient
+PyGithub

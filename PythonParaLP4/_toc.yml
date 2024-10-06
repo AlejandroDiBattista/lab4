@@ -15,3 +15,4 @@ chapters:
 - file: 09-iteradores
 - file: 10-errores
 - file: 11-modulos
+- file: 12-numpy 
