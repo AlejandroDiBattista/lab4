@@ -21,7 +21,7 @@
 17. 59423  Esper, Rodrigo Fernando                  🟢🟢🟢🟢🟢
 18. 55530  Fernández, Agustín Alejo                 🔴🟢🟢🟢🟢
 19. 59130  Gatti, Luciano Alberto                   🟢🟢🟢🟢🟢
-20. 58832  González, Adrián Leonel                  🟢🟢🟢🟢🔴
+20. 58832  González, Adrián Leonel                  🟢🟢🟢🟢🟡
 21. 55533  González, Luciano Leandro                🟢🟢🟢🟢🟢
 22. 55906  González, Ramiro Exequiel                🔴🟢🟢🟢🟡
 23. 58782  Goychea, María de los Angeles            🟢🟢🟢🟢🟢

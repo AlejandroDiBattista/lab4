@@ -8,7 +8,7 @@
  🟢🟢🟢🟢🟡  6. 58828  Alvarez, Nicolás Nahuel                 
  🟢🟢🟢🟢🟡  8. 58909  Argañaraz, Leonardo Ramiro              
  🔴🟢🟢🟢🟡 15. 59268  Cordoba, Pedro Josue                    
- 🟢🟢🟢🟢🔴 20. 58832  González, Adrián Leonel                 
+ 🟢🟢🟢🟢🟡 20. 58832  González, Adrián Leonel                 
  🔴🟢🟢🟢🟡 22. 55906  González, Ramiro Exequiel               
  🔴🔴🔴🔴🟡 24. 55940  Gramajo, Elba Virginia Maria            
  🟢🟢🟢🟢🟡 26. 55751  Jérez, Francisco David                  
