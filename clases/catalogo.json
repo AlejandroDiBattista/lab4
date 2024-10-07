@@ -1,0 +1,30 @@
+{"codigo":1,"nombre":"Coca Cola","precio":1490,"tipo":"gaseosa","cantidad":10,"precio_acumulado":1490}
+{"codigo":2,"nombre":"Pepsi Cola","precio":1200,"tipo":"gaseosa","cantidad":20,"precio_acumulado":2690}
+{"codigo":3,"nombre":"Sonrisa","precio":1200,"tipo":"galleta","cantidad":30,"precio_acumulado":3890}
+{"codigo":4,"nombre":"Oreo","precio":2300,"tipo":"galleta","cantidad":40,"precio_acumulado":6190}
+{"codigo":5,"nombre":"Fanta","precio":1400,"tipo":"gaseosa","cantidad":15,"precio_acumulado":7590}
+{"codigo":6,"nombre":"Sprite","precio":1300,"tipo":"gaseosa","cantidad":25,"precio_acumulado":8890}
+{"codigo":7,"nombre":"7 Up","precio":1350,"tipo":"gaseosa","cantidad":18,"precio_acumulado":10240}
+{"codigo":8,"nombre":"Dr Pepper","precio":1600,"tipo":"gaseosa","cantidad":32,"precio_acumulado":11840}
+{"codigo":9,"nombre":"Chokis","precio":2500,"tipo":"galleta","cantidad":35,"precio_acumulado":14340}
+{"codigo":10,"nombre":"Mar\u00eda","precio":2100,"tipo":"galleta","cantidad":50,"precio_acumulado":16440}
+{"codigo":11,"nombre":"Principe","precio":2400,"tipo":"galleta","cantidad":58,"precio_acumulado":18840}
+{"codigo":12,"nombre":"Macma","precio":2200,"tipo":"galleta","cantidad":42,"precio_acumulado":21040}
+{"codigo":13,"nombre":"Spaghetti","precio":1900,"tipo":"fideo","cantidad":30,"precio_acumulado":22940}
+{"codigo":14,"nombre":"Fettuccine","precio":1900,"tipo":"fideo","cantidad":25,"precio_acumulado":24840}
+{"codigo":15,"nombre":"Macaroni","precio":2800,"tipo":"fideo","cantidad":20,"precio_acumulado":27640}
+{"codigo":16,"nombre":"Penne","precio":1700,"tipo":"fideo","cantidad":35,"precio_acumulado":29340}
+{"codigo":17,"nombre":"Ravioli","precio":2800,"tipo":"fideo","cantidad":15,"precio_acumulado":32140}
+{"codigo":18,"nombre":"Danone","precio":2500,"tipo":"yogur","cantidad":20,"precio_acumulado":34640}
+{"codigo":19,"nombre":"La Seren\u00edsima","precio":2400,"tipo":"yogur","cantidad":25,"precio_acumulado":37040}
+{"codigo":20,"nombre":"Ilolay","precio":2400,"tipo":"yogur","cantidad":30,"precio_acumulado":39440}
+{"codigo":21,"nombre":"SanCor","precio":2300,"tipo":"yogur","cantidad":35,"precio_acumulado":41740}
+{"codigo":22,"nombre":"Milkaut","precio":1900,"tipo":"yogur","cantidad":40,"precio_acumulado":43640}
+{"codigo":23,"nombre":"Evian","precio":3000,"tipo":"agua","cantidad":50,"precio_acumulado":46640}
+{"codigo":24,"nombre":"Bonafont","precio":2500,"tipo":"agua","cantidad":60,"precio_acumulado":49140}
+{"codigo":25,"nombre":"Smartwater","precio":3500,"tipo":"agua","cantidad":40,"precio_acumulado":52640}
+{"codigo":26,"nombre":"Arroz Gallo","precio":1200,"tipo":"arroz","cantidad":50,"precio_acumulado":53840}
+{"codigo":27,"nombre":"Arroz Dos Hermanos","precio":1100,"tipo":"arroz","cantidad":30,"precio_acumulado":54940}
+{"codigo":28,"nombre":"Arroz Molinos Ala","precio":1300,"tipo":"arroz","cantidad":20,"precio_acumulado":56240}
+{"codigo":29,"nombre":"Arroz Lucchetti","precio":1250,"tipo":"arroz","cantidad":55,"precio_acumulado":57490}
+{"codigo":30,"nombre":"Arroz La Campagnola","precio":1150,"tipo":"arroz","cantidad":45,"precio_acumulado":58640}
