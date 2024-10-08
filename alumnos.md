@@ -16,7 +16,7 @@
 12. 47121  Caram, Jesús Nicolás                     🟢🟢🟢🟢🟢
 13. 58865  Chávez, Pedro Ismael                     🟢🟢🟢🟢🟢
 14. 59234  Chocobar, Matías Sebastián               🟢🟢🟢🟢🟢
-15. 59268  Cordoba, Pedro Josue                     🔴🟢🟢🟢🟡
+15. 59268  Cordoba, Pedro Josue                     🟢🟢🟢🟢🟡
 16. 58732  Coronel, Sergio Antonio                  🟢🟢🟢🟢🟢
 17. 59423  Esper, Rodrigo Fernando                  🟢🟢🟢🟢🟢
 18. 55530  Fernández, Agustín Alejo                 🔴🟢🟢🟢🟢
@@ -31,7 +31,7 @@
 27. 58943  Maza, Santiago Martín                    🟢🟢🟢🟢🟢
 28. 55650  Moyano, Iván Eduardo                     🔴🟢🔴🔴🟢
 29. 58907  Nuñez, Walter Exequiel                   🟢🟢🟢🟢🟢
-30. 59555  Reymoso, Lucas Facundo                   🟢🟢🟢🔴🔴
+30. 59555  Reynoso, Lucas Facundo                   🟢🟢🟢🔴🔴
 31. 58808  Rodríguez, Nahuel Federico               🟢🟢🟢🟢🟢
 32. 47417  Rosales, José Ignacio                    🟢🟢🟢🟢🟢
 33. 58942  Sánchez Ortiz, Hernán                    🟢🟢🟢🟢🟢
@@ -43,6 +43,7 @@
 
 ## Comisión 5
 ```
+ 1. 58690  Díaz, Facundo Gabriel                    🟢🟢🔴🔴🔴
  2. 58876  Díaz, Manuel Lautaro                     🟢🟢🟢🟢🔴
  3. 58773  Ellí Salazar, Gerónimo                   🟢🟢🟢🟢🟢
  4. 55578  Fernández Dumit, Patricio                🟢🟢🟢🟢🟢
@@ -53,7 +54,7 @@
  9. 58734  Galván, Víctor Mateo                     🟢🟢🟢🟢🟡
 10. 59154  García, Máximo                           🟢🟢🟢🟢🟢
 11. 58740  García, Sergio Martín                    🟢🟢🟢🟢🟡
-12. 59076  Gómez Martínez, Matías Leonardo          🟢🟢🟢🔴🟢
+12. 59076  Gómez Martínez, Matías Lionel            🟢🟢🟢🔴🟢
 13. 59135  Gómez, Facundo Matías                    🔴🔴🔴🔴🔴
 14. 58894  González Nacusse, Flavia                 🔴🟢🔴🟢🟢
 15. 59488  González, Mariano Emanuel                🟢🔴🟢🟢🔴
@@ -100,6 +101,7 @@
 
 ## Comisión 7
 ```
+ 1. 55936  Arcos, Lucas Isaias                      🟢🟢🟢🟢🟡
  2. 55547  Cabrera, Pablo Daniel                    🟢🟢🟢🟢🟡
  3. 58769  Callejas, Máximo Facundo                 🟢🟢🟢🟢🟢
  4. 59312  Cancino, Ignacio Matías                  🟢🟢🟢🟢🟡
@@ -136,6 +138,7 @@
 
 ## Comisión 9
 ```
+ 1. 59336  Bulan Georgieff, Alexandre               🔴🔴🔴🔴🟡
  2. 58842  Fernández Licciardi, Mauricio            🟢🟢🟢🟢🟢
  3. 59310  Paz Berrondo, Nahuel Agustín             🟢🟢🟢🟢🟢
  4. 58679  Pereyra, Franco Sebastián                🟢🟢🟢🟢🟢

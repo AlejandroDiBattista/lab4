@@ -7,17 +7,18 @@
  🔴🟢🟢🟢🟡  5. 58731  Alvarez, Nicolás                        
  🟢🟢🟢🟢🟡  6. 58828  Alvarez, Nicolás Nahuel                 
  🟢🟢🟢🟢🟡  8. 58909  Argañaraz, Leonardo Ramiro              
- 🔴🟢🟢🟢🟡 15. 59268  Cordoba, Pedro Josue                    
+ 🟢🟢🟢🟢🟡 15. 59268  Cordoba, Pedro Josue                    
  🟢🟢🟢🟢🟡 20. 58832  González, Adrián Leonel                 
  🔴🟢🟢🟢🟡 22. 55906  González, Ramiro Exequiel               
  🔴🔴🔴🔴🟡 24. 55940  Gramajo, Elba Virginia Maria            
  🟢🟢🟢🟢🟡 26. 55751  Jérez, Francisco David                  
- 🟢🟢🟢🔴🔴 30. 59555  Reymoso, Lucas Facundo                  
+ 🟢🟢🟢🔴🔴 30. 59555  Reynoso, Lucas Facundo                  
  🟢🟢🟢🟢🟡 36. 59451  Urueña, Karen Florencia                 
 ```
 
 ## Comisión 5
 ```
+ 🟢🟢🔴🔴🔴  1. 58690  Díaz, Facundo Gabriel                   
  🟢🟢🟢🟢🔴  2. 58876  Díaz, Manuel Lautaro                    
  🟢🟢🟢🟢🟡  5. 58735  Fernandez Gomez, Manuel A               
  🟢🟢🟢🟢🟡  9. 58734  Galván, Víctor Mateo                    
@@ -39,6 +40,7 @@
 
 ## Comisión 7
 ```
+ 🟢🟢🟢🟢🟡  1. 55936  Arcos, Lucas Isaias                     
  🟢🟢🟢🟢🟡  2. 55547  Cabrera, Pablo Daniel                   
  🟢🟢🟢🟢🟡  4. 59312  Cancino, Ignacio Matías                 
  🟢🟢🔴🟢🟡  6. 59158  Corral, Luciano                         
@@ -55,6 +57,7 @@
 
 ## Comisión 9
 ```
+ 🔴🔴🔴🔴🟡  1. 59336  Bulan Georgieff, Alexandre              
  🟢🟢🟢🟢🟡 14. 59059  Soraire, Elías Nicolás                  
  🟢🟢🟢🟢🟡 18. 59056  Villafañe, Lucas Gastón                 
 ```
