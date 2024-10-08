@@ -51,7 +51,6 @@
  🟢🟢🟢🟢🟡 21. 59490  Parra, Ana Belén                        
  🔴🟢🟢🟢🟡 24. 55489  Pérez, Sofía Micaela                    
  🔴🔴🔴🔴🟡 28. 59072  Rodríguez, Ana Paula                    
- 🟢🟢🟢🟢🔴 31. 59047  Torres, Francisco Gabriel               
 ```
 
 ## Comisión 9

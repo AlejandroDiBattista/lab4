@@ -129,7 +129,7 @@
 28. 59072  Rodríguez, Ana Paula                     🔴🔴🔴🔴🟡
 29. 55776  Roldán Vicecci, Camila Lucía             🔴🔴🔴🔴🔴
 30. 57586  Roldán, Julieta del Rocío                🔴🔴🔴🔴🔴
-31. 59047  Torres, Francisco Gabriel                🟢🟢🟢🟢🔴
+31. 59047  Torres, Francisco Gabriel                🟢🟢🟢🟢🟢
 32. 59250  Martinez, Ignacio                        🔴🟢🟢🟢🟢
 33. 58728  Montivero Lizondo, Martino               🟢🟢🟢🟢🟢
 ```
