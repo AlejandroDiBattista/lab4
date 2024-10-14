@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizador de Ecuaciones Matemáticas 3D</title>
+    <!-- Importar React y ReactDOM desde CDNs -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- Importar Babel para soportar JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Importar Math.js para evaluar expresiones matemáticas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"></script>
+    <!-- Importar Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #root {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 300px;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f0f0f0;
+            border-right: 1px solid #ccc;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .slider-container {
+            margin-bottom: 15px;
+        }
+        .slider-label {
+            margin-bottom: 5px;
+        }
+        .equation-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Código de la aplicación -->
+    <script type="text/babel">
+
+    const { useState, useEffect } = React;
+
+    function App() {
+        const [equationInput, setEquationInput] = useState('a*sin(b*x) + c*cos(d*y)');
+        const [parameters, setParameters] = useState({});
+        const [variables, setVariables] = useState(['x', 'y']);
+        const [paramValues, setParamValues] = useState({});
+        const [plotData, setPlotData] = useState(null);
+        const [range, setRange] = useState({
+            xMin: -10,
+            xMax: 10,
+            yMin: -10,
+            yMax: 10,
+            numPoints: 50,
+        });
+
+        // Detectar variables y parámetros en la ecuación
+        useEffect(() => {
+            const vars = new Set();
+            const params = new Set();
+            const node = math.parse(equationInput);
+            node.traverse(function (node) {
+                if (node.isSymbolNode) {
+                    const name = node.name;
+                    if (['x', 'y', 'z'].includes(name)) {
+                        vars.add(name);
+                    } else if (!math[name]) { // Excluir funciones matemáticas
+                        params.add(name);
+                    }
+                }
+            });
+            setVariables([...vars]);
+            const sortedParams = [...params].sort();
+            setParameters(sortedParams);
+            // Inicializar valores de parámetros si aún no están establecidos
+            const initialParamValues = {};
+            sortedParams.forEach(param => {
+                initialParamValues[param] = paramValues[param] || 1.0;
+            });
+            setParamValues(initialParamValues);
+        }, [equationInput]);
+
+        // Actualizar el gráfico cuando cambian los parámetros o la ecuación
+        useEffect(() => {
+            if (variables.length === 0) return;
+            try {
+                // Crear el rango de valores
+                const x = math.range(range.xMin, range.xMax, (range.xMax - range.xMin) / range.numPoints, true).toArray();
+                const y = math.range(range.yMin, range.yMax, (range.yMax - range.yMin) / range.numPoints, true).toArray();
+                const X = [];
+                const Y = [];
+                x.forEach((xi) => {
+                    y.forEach((yi) => {
+                        X.push(xi);
+                        Y.push(yi);
+                    });
+                });
+
+                // Crear el scope para evaluar la ecuación
+                const scope = {
+                    x: X,
+                    y: Y,
+                    ...paramValues,
+                    pi: Math.PI,
+                    e: Math.E,
+                };
+
+                // Evaluar la ecuación
+                const expr = math.compile(equationInput);
+                const Z = expr.evaluate(scope);
+
+                // Preparar los datos para Plotly
+                const Z_matrix = [];
+                for (let i = 0; i < range.numPoints; i++) {
+                    Z_matrix.push(Z.slice(i * range.numPoints, (i + 1) * range.numPoints));
+                }
+
+                setPlotData({
+                    x: x,
+                    y: y,
+                    z: Z_matrix,
+                });
+            } catch (err) {
+                console.error('Error al evaluar la ecuación:', err);
+                setPlotData(null);
+            }
+        }, [paramValues, equationInput, range]);
+
+        // Manejar cambios en los sliders
+        const handleSliderChange = (param, value) => {
+            setParamValues({
+                ...paramValues,
+                [param]: value,
+            });
+        };
+
+        // Manejar cambios en los inputs de rango
+        const handleRangeChange = (e) => {
+            const { name, value } = e.target;
+            setRange({
+                ...range,
+                [name]: parseFloat(value),
+            });
+        };
+
+        return (
+            <div id="app">
+                <div className="sidebar">
+                    <h2>Configuración</h2>
+                    <div>
+                        <label>Ecuación:</label>
+                        <input
+                            type="text"
+                            className="equation-input"
+                            value={equationInput}
+                            onChange={(e) => setEquationInput(e.target.value)}
+                        />
+                    </div>
+                    <h3>Parámetros</h3>
+                    {parameters.map((param) => (
+                        <div key={param} className="slider-container">
+                            <div className="slider-label">{param}: {paramValues[param]}</div>
+                            <input
+                                type="range"
+                                min="-10"
+                                max="10"
+                                step="0.1"
+                                value={paramValues[param]}
+                                onChange={(e) => handleSliderChange(param, parseFloat(e.target.value))}
+                            />
+                        </div>
+                    ))}
+                    <h3>Rango de Variables</h3>
+                    <div>
+                        <label>Valor mínimo de x:</label>
+                        <input
+                            type="number"
+                            name="xMin"
+                            value={range.xMin}
+                            onChange={handleRangeChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Valor máximo de x:</label>
+                        <input
+                            type="number"
+                            name="xMax"
+                            value={range.xMax}
+                            onChange={handleRangeChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Valor mínimo de y:</label>
+                        <input
+                            type="number"
+                            name="yMin"
+                            value={range.yMin}
+                            onChange={handleRangeChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Valor máximo de y:</label>
+                        <input
+                            type="number"
+                            name="yMax"
+                            value={range.yMax}
+                            onChange={handleRangeChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Número de puntos:</label>
+                        <input
+                            type="number"
+                            name="numPoints"
+                            min="10"
+                            max="200"
+                            value={range.numPoints}
+                            onChange={handleRangeChange}
+                        />
+                    </div>
+                </div>
+                <div className="content">
+                    <h2>Resultado</h2>
+                    {plotData ? (
+                        <Plot
+                            data={[
+                                {
+                                    x: plotData.x,
+                                    y: plotData.y,
+                                    z: plotData.z,
+                                    type: 'surface',
+                                },
+                            ]}
+                            layout={{
+                                title: 'Gráfico 3D de la ecuación',
+                                scene: {
+                                    xaxis: { title: 'x' },
+                                    yaxis: { title: 'y' },
+                                    zaxis: { title: 'z' },
+                                },
+                            }}
+                        />
+                    ) : (
+                        <p>Error al evaluar la ecuación. Por favor, verifica la sintaxis.</p>
+                    )}
+                </div>
+            </div>
+        );
+    }
+
+    // Componente para renderizar el gráfico con Plotly
+    function Plot({ data, layout }) {
+        const plotRef = React.useRef(null);
+
+        useEffect(() => {
+            Plotly.newPlot(plotRef.current, data, layout);
+            return () => {
+                Plotly.purge(plotRef.current);
+            };
+        }, [data, layout]);
+
+        return <div ref={plotRef} style={{ width: '100%', height: '100%' }} />;
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+
+    </script>
+</body>
+</html>
