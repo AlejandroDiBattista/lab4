@@ -20,7 +20,7 @@
 ## Comisión 7
 ```
  🟢🟢🟢🟢🔴 13. 55939  Mena, Iván Leandro                      
- 🟢🟢🟢🔴🔴 16. 58826  Moyano, Luján                           
+ 🟢🟢🟢🟢🔴 16. 58826  Moyano, Luján                           
  🟢🔴🔴🔴🔴 19. 59162  Nuñez Orqueta, Luis Alberto             
  🟢🟢🟢🟢🟡 21. 59490  Parra, Ana Belén                        
  🔴🟢🟢🟢🟡 24. 55489  Pérez, Sofía Micaela                    

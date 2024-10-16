@@ -116,7 +116,7 @@
 13. 55939  Mena, Iván Leandro                       🟢🟢🟢🟢🔴
 14. 55606  Meza, Julieta Noemí                      🟢🟢🟢🟢🟢
 15. 59134  Molina, Tomás Agustín                    🟢🟢🟢🟢🟢
-16. 58826  Moyano, Luján                            🟢🟢🟢🔴🔴
+16. 58826  Moyano, Luján                            🟢🟢🟢🟢🔴
 17. 59044  Naranjo Sosa, Lucas                      🟢🟢🟢🟢🟢
 18. 59358  Nieva Pastoriza, Gonzalo                 🟢🟢🟢🟢🟢
 19. 59162  Nuñez Orqueta, Luis Alberto              🟢🔴🔴🔴🔴
