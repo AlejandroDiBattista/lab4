@@ -95,7 +95,7 @@
 50. 58866  Velázquez, Tobias Alejo                  🟢🟢🟢🟢🟢
 51. 58899  Villagra, Juan Gabriel                   🟢🟢🟢🟢🟢
 52. 58874  Rigazio, Malena Soledad                  🟢🟢🔴🔴🔴
-53. 59909  Wierna, María Belén                      🔴🔴🔴🔴🔴
+53. 59909  Wierna, María Belén                      🔴🔴🔴🔴🟡
 54. 55600  Cañete Jacobo, Juan Manuel               🟢🟢🟢🟢🟢
 ```
 
@@ -114,9 +114,9 @@
 11. 59043  Medina, Elias Manuel                     🟢🟢🟢🟢🟢
 12. 59194  Medina, María Josefina                   🟢🟢🟢🟢🟢
 13. 55939  Mena, Iván Leandro                       🟢🟢🟢🟢🔴
-14. 55606  Meza, Julieta Noemí                      🔴🔴🔴🔴🟢
+14. 55606  Meza, Julieta Noemí                      🟢🟢🟢🟢🟢
 15. 59134  Molina, Tomás Agustín                    🟢🟢🟢🟢🟢
-16. 58826  Moyano, Luján                            🟢🔴🔴🔴🔴
+16. 58826  Moyano, Luján                            🟢🟢🟢🔴🔴
 17. 59044  Naranjo Sosa, Lucas                      🟢🟢🟢🟢🟢
 18. 59358  Nieva Pastoriza, Gonzalo                 🟢🟢🟢🟢🟢
 19. 59162  Nuñez Orqueta, Luis Alberto              🟢🔴🔴🔴🔴
@@ -128,7 +128,7 @@
 25. 58934  Quiroga Gil, Juan Ignacio                🟢🟢🟢🟢🟢
 26. 58935  Quiroga Gil, Santiago José               🟢🟢🟢🟢🟢
 27. 58912  Quiroga, Leandro Iván                    🟢🟢🟢🟢🟢
-28. 59072  Rodríguez, Ana Paula                     🔴🔴🔴🔴🟢
+28. 59072  Rodríguez, Ana Paula                     🟢🟢🟢🟢🟢
 29. 55776  Roldán Vicecci, Camila Lucía             🔴🔴🔴🔴🔴
 30. 57586  Roldán, Julieta del Rocío                🔴🔴🔴🔴🔴
 31. 59047  Torres, Francisco Gabriel                🟢🟢🟢🟢🟢

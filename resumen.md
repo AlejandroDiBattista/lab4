@@ -14,12 +14,13 @@
  🟢🟢🟢🟢🟡 42. 58692  Rosselo Salas, Maia Josefina            
  🟢🟢🟢🔴🟡 43. 58873  Salazar, Enzo Gabriel                   
  🟢🟢🔴🔴🔴 52. 58874  Rigazio, Malena Soledad                 
+ 🔴🔴🔴🔴🟡 53. 59909  Wierna, María Belén                     
 ```
 
 ## Comisión 7
 ```
  🟢🟢🟢🟢🔴 13. 55939  Mena, Iván Leandro                      
- 🟢🔴🔴🔴🔴 16. 58826  Moyano, Luján                           
+ 🟢🟢🟢🔴🔴 16. 58826  Moyano, Luján                           
  🟢🔴🔴🔴🔴 19. 59162  Nuñez Orqueta, Luis Alberto             
  🟢🟢🟢🟢🟡 21. 59490  Parra, Ana Belén                        
  🔴🟢🟢🟢🟡 24. 55489  Pérez, Sofía Micaela                    
